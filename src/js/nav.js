@@ -1,3 +1,5 @@
+import 'flexslider'
+
 //	导航固定顶部
 $(function(){
 	$(window).scroll(function(){
@@ -9,3 +11,16 @@ $(function(){
 		}
 	});
 })
+
+// 首页轮播
+$(function() {
+	$('#home_slider').flexslider({
+		animation: 'slide',
+		controlNav: true,
+		directionNav: true,
+		animationLoop: true,
+		slideshow: true,
+		slideshowSpeed:2000,
+		useCSS: false
+	});
+});
