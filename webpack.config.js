@@ -5,7 +5,8 @@ const webpack = require('webpack');
 module.exports = {
   mode: "development",
   entry: {
-    bundle: './src/index.js',
+    index: './src/index.js',
+    login: './src/login.js',
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -16,10 +17,12 @@ module.exports = {
       new htmlWebpackPlugin({
         filename: "index.html",
         template: path.resolve(__dirname, './src/index.html'),
+        chunks: ["index"],
       }),
       new htmlWebpackPlugin({
         filename: "login.html",
-        template: './src/login.html'
+        template: './src/login.html',
+        chunks: ["login"],
       }),
       new webpack.ProvidePlugin({
         $: "jquery",
@@ -39,7 +42,7 @@ module.exports = {
         // type: "asset/resource",
         parser: { // 用 module.parser 在一个地方配置所有解析器的选项
           dataUrlCondition: {
-            maxSize: 8 * 1024,
+            maxSize: 1024,
           }
         },
         generator: {
