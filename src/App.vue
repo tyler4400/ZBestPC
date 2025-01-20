@@ -1,10 +1,15 @@
 <template>
   <div id="app">
-    <h1>{{ message }}</h1>
+    <router-view/>
   </div>
 </template>
 <script setup>
-import {ref} from 'vue'
-const message = ref('Hello Vue!')
+// import {ref} from 'vue'
+// const message = ref('Hello Vue!')
 </script>
-<style></style>
+<style>
+#app {
+  height: 100vh;
+  width: 100vw;
+}
+</style>
