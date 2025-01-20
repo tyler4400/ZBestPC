@@ -9,23 +9,23 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 module.exports = {
   mode: "development",
   entry: {
-    index: './src/index.js',
-    login: './src/login.js',
+    index: path.resolve(__dirname, '../src/index.js'),
+    login: path.resolve(__dirname, '../src/login.js'),
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: 'js/[name].[hash:8].js',
     clean: true,
   },
   plugins: [
       new htmlWebpackPlugin({
         filename: "index.html",
-        template: path.resolve(__dirname, './src/index.html'),
+        template: path.resolve(__dirname, '../src/index.html'),
         chunks: ["index"],
       }),
       new htmlWebpackPlugin({
         filename: "login.html",
-        template: './src/login.html',
+        template: path.resolve(__dirname, '../src/login.html'),
         chunks: ["login"],
       }),
     /**
@@ -38,7 +38,7 @@ module.exports = {
       }),
     /* 移动文件 */
       new CopyPlugin({
-        patterns: [{ from: path.resolve(__dirname, './src/img'), to: path.resolve(__dirname, 'dist/img') }],
+        patterns: [{ from: path.resolve(__dirname, '../src/img'), to: path.resolve(__dirname, '../dist/img') }],
       }),
     /* 对css进行抽离 */
       new MiniCssExtractPlugin({
@@ -103,12 +103,18 @@ module.exports = {
       }
     }
   },
+  // 性能
+  performance: {
+    hints: false,
+    maxAssetSize: 300000, //单文件超过300k，命令行告警
+    maxEntrypointSize: 300000, //首次加载文件总和超过300k，命令行告警
+  },
   devServer: {
-    static: path.resolve(__dirname, './dist'),
+    static: path.resolve(__dirname, '../dist'),
     // compress: true,
     port: 8080,
     hot: true,
     // quiet: true,
-    watchFiles: ['./src/**/*.html']
+    watchFiles: ['src/**/*.html']
   }
 }
