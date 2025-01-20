@@ -7,8 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack server --config build_config/webpack.config.js",
     "dev-vue": "webpack server --config build_config/webpack.vue.config.js",
+    "dev-vuempa": "webpack server --config build_config/webpack.vuempa.config.js",
     "build": "webpack --config build_config/webpack.config.js",
     "build-vue": "webpack --config build_config/webpack.vue.config.js",
+    "build-vuempa": "webpack --config build_config/webpack.vuempa.config.js",
     "build-watch": "webpack --watch --config build_config/webpack.config.js"
   },
   "author": "",

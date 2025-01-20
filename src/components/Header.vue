@@ -5,8 +5,8 @@
         <h1 class="fl"><a href="index.html"><img src="img/logo.png"/></a></h1>
         <div class="fr clearfix" id="top1">
           <p class="fl">
-                        <router-link id="login" to="/login">登录</router-link>
-<!--            <a href="login.html" id="login">注册</a>-->
+<!--            <router-link id="login" to="/login">登录</router-link>-->
+            <a href="login.html" id="login">注册</a>
             <a href="#" id="reg">注册</a>
           </p>
           <form action="#" method="get" class="fl">
