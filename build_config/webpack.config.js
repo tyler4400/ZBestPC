@@ -21,12 +21,12 @@ module.exports = {
       new htmlWebpackPlugin({
         filename: "index.html",
         template: path.resolve(__dirname, '../src/index.html'),
-        chunks: ["index"],
+        chunks: ["index"], // 对应 entry.index
       }),
       new htmlWebpackPlugin({
         filename: "login.html",
         template: path.resolve(__dirname, '../src/login.html'),
-        chunks: ["login"],
+        chunks: ["login"], //对应 entry.login
       }),
     /**
      * 对于import 'jquery'; 这种库，引入之后会在window上挂载变量的
