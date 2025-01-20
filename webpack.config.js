@@ -3,6 +3,8 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -64,6 +66,20 @@ module.exports = {
           filename: 'images/[name].[hash:6].[ext]',
         }
       }
+    ]
+  },
+  /* 优化 */
+  optimization: {
+    // 告知 webpack 使用 TerserPlugin 或其它在 optimization.minimizer定义的插件压缩 bundle。
+    minimize: true,
+    // 允许你通过提供一个或多个定制过的 TerserPlugin 实例，覆盖默认压缩工具(minimizer)
+    minimizer: [
+        new TerserPlugin({
+          parallel: true, // 多进程并发运行以提高构建速度。 并发运行的默认数量： os.cpus().length - 1 。
+          // include: /\src/,
+        }),
+        // 压缩css
+        new CssMinimizerPlugin()
     ]
   },
   devServer: {
